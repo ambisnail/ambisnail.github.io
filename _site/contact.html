@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <link rel="icon" href="/favicon.ico?" type="img/x-ico">
+
+  <!-- Page info tags -->
+<meta name="author" content="Connor Yimin Wang" />
+
+<title>Contact Page</title>
+
+
+
+<meta name="description" content="Send me a message via this page">
+
+
+<link rel="alternate" type="application/rss+xml" title="Connor Wang - Ambisnail is a small website. Suitable for personal Websites & Blogs.
+" href="/feed.xml" />
+
+  <!-- Facebook OpenGraph tags -->
+
+  <meta property="fb:app_id" content="12345" />
+  
+
+  
+  <meta property="og:title" content="Contact Page" />
+  
+
+   
+  <meta property="og:description" content="Send me a message via this page">
+  
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/contact" />
+  <link rel="canonical" href="http://localhost:4000/contact" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/homepage.jpg" />
+  
+    <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Contact Page" />
+  
+
+  
+  <meta name="twitter:description" content="Send me a message via this page">
+  
+
+  
+  
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/main.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/contact-page.css" />
+
+
+
+
+</head>
+
+    <body>
+        <nav id="top-bar">
+    <div id="dropdown-wrapper">
+         <i id="dropdown-btn" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+         <div id="dropdown-menu">
+            <div id="search-wrapper">
+                <form method="GET" action="http://localhost:4000/search/">
+                    <input id="search-box" type="text" name="keyword" placeholder="type & enter to search">
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+            <div class="vline"></div>
+            <div id="theme-selector">
+                <span style="vertical-align:middle;">Light theme&nbsp;</span>
+                <label style="vertical-align:middle;" class="switch">
+                    <input id="theme-select" type="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span style="vertical-align:middle;">&nbsp;Dark theme</span>
+            </div>
+         </div>
+    </div>
+    <div class="menu-nojs">
+      <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+    </div>
+    <div id="site-title"><a href="http://localhost:4000/"> Connor Wang </a></div>
+</nav>
+
+        <div class="header-content">
+    <h1 class="page-title">Contact Page</h1>
+</div>
+<div class="container">
+    <h3>Send me a message via this page / 从这一页给我发消息:</h3>
+
+<form id="contact-form" method="POST" action="https://formspree.io/connor.wang@ualberta.ca">
+  <input type="text" name="_gotcha" style="display:none" />
+  <input type="email" name="email" placeholder="Email / 你的邮箱">
+  <input type="text" name="website" placeholder="Your name / 你的名字">
+  <textarea name="message" placeholder="Message / 信息"></textarea>
+  <input type="submit" class="btn btn-lg btn-primary" value="Send / 发送"></input>
+</form>
+
+</div>
+        <footer>
+    <p>The website of <b>Connor Yimin Wang</b></p>
+    <p>Ambisnail (c) made by <a href="https://ambisnail.github.io">Connor Wang</a></p>
+</footer>
+
+        <style>
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+    </body>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/main.js"></script>
+
+    <script src="http://localhost:4000/assets/scripts/return-to-top.js"></script>
+
+
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/contact-page.js"></script>
+
+
+</html>

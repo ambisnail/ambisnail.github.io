@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <link rel="icon" href="/favicon.ico?" type="img/x-ico">
+
+  <!-- Page info tags -->
+<meta name="author" content="Connor Yimin Wang" />
+
+<title>Cấu trúc chương trình C cơ bản</title>
+
+
+
+<meta name="description" content="**Các thành phần của một chương trình C cơ bản bao gồm:** * Các lệnh tiền xử lí * Các hàm * Các biến * Các lệnh và biểu thức * Các comment (ghi chú về code giúp ích cho công tác bảo trì và nâng cấp) Chúng ta hãy...">
+
+
+<link rel="alternate" type="application/rss+xml" title="Connor Wang - Ambisnail is a small website. Suitable for personal Websites & Blogs.
+" href="/feed.xml" />
+
+  <!-- Facebook OpenGraph tags -->
+
+  <meta property="fb:app_id" content="12345" />
+  
+
+  
+  <meta property="og:title" content="Cấu trúc chương trình C cơ bản" />
+  
+
+   
+  <meta property="og:description" content="**Các thành phần của một chương trình C cơ bản bao gồm:** * Các lệnh tiền xử lí * Các hàm * Các biến * Các lệnh và biểu thức * Các comment (ghi chú về code giúp ích cho công tác bảo trì và nâng cấp) Chúng ta hãy...">
+  
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-27-cau-truc-chuong-trinh-c-co-ban" />
+  <link rel="canonical" href="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-27-cau-truc-chuong-trinh-c-co-ban" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/homepage.jpg" />
+  
+    <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Cấu trúc chương trình C cơ bản" />
+  
+
+  
+  <meta name="twitter:description" content="**Các thành phần của một chương trình C cơ bản bao gồm:** * Các lệnh tiền xử lí * Các hàm * Các biến * Các lệnh và biểu thức * Các comment (ghi chú về code giúp ích cho công tác bảo trì và nâng cấp) Chúng ta hãy...">
+  
+
+  
+  
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/main.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+
+
+</head>
+
+    <body>
+        <nav id="top-bar">
+    <div id="dropdown-wrapper">
+         <i id="dropdown-btn" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+         <div id="dropdown-menu">
+            <div id="search-wrapper">
+                <form method="GET" action="http://localhost:4000/search/">
+                    <input id="search-box" type="text" name="keyword" placeholder="type & enter to search">
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+            <div class="vline"></div>
+            <div id="theme-selector">
+                <span style="vertical-align:middle;">Light theme&nbsp;</span>
+                <label style="vertical-align:middle;" class="switch">
+                    <input id="theme-select" type="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span style="vertical-align:middle;">&nbsp;Dark theme</span>
+            </div>
+         </div>
+    </div>
+    <div class="menu-nojs">
+      <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+    </div>
+    <div id="site-title"><a href="http://localhost:4000/"> Connor Wang </a></div>
+</nav>
+
+        
+    <div class="header-content">
+        <h1 class="page-title">Cấu trúc chương trình C cơ bản</h1>
+        <span class="post-meta">Posted on July 27, 2016<br>
+        Reading time: 
+
+
+    1 min
+</span>
+    </div>
+
+        
+<div class="container">
+    <p><strong>Các thành phần của một chương trình C cơ bản bao gồm:</strong></p>
+
+<ul>
+  <li>Các lệnh tiền xử lí</li>
+  <li>Các hàm</li>
+  <li>Các biến</li>
+  <li>Các lệnh và biểu thức</li>
+  <li>Các comment (ghi chú về code giúp ích cho công tác bảo trì và nâng cấp)</li>
+</ul>
+
+<p>Chúng ta hãy cùng nghiên cứu chương trình Hello World – Chào thế giới trong ngôn ngữ C. Chương trình này có chức năng in dòng chữ “Hello World!” lên màn hình máy tính. Tên thành phần của chương trình đã được tôi comment bên cạnh mỗi dòng code (sử dụng cặp dấu /* */). Bạn cũng có thể sử dụng cặp // để đánh dấu phần sau đó cho tới cuối dòng code là comment.</p>
+
+<p><strong>Mã nguồn:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="cm">/* Đây là lệnh tiền xử lí, thông báo cho trình biên dịch biết
+chương trình của chúng ta sử dụng thư viện stdio.h */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">//Hàm main - nơi chương trình C bắt đầu thực thi</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello World! n"</span><span class="p">);</span>  <span class="c1">//Câu lệnh in ra dòng chữ Hello World!</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//Giá trị trả về của hàm</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Các bạn hãy Copy toàn bộ các dòng code trên, paste vào Geany và lưu lại dưới tên hello.c nhé. (file mã nguồn chương trình ngôn ngữ C có đuôi .c ).</p>
+
+<p>Tiếp đó chọn menu <strong>Build &gt; Build (F9)</strong> để biên dịch. Và <strong>Build &gt; Excute (F5)</strong> để chạy chương trình đã biên dịch nhé.</p>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/bien-dich-Hello-world-c.png" alt="Biên dịch chương trình C" /></p>
+
+</div>
+
+        <footer>
+    <p>The website of <b>Connor Yimin Wang</b></p>
+    <p>Ambisnail (c) made by <a href="https://ambisnail.github.io">Connor Wang</a></p>
+</footer>
+
+        <style>
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+    </body>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/main.js"></script>
+
+    <script src="http://localhost:4000/assets/scripts/return-to-top.js"></script>
+
+
+
+
+
+
+</html>

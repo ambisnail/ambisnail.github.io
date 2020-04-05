@@ -5,7 +5,7 @@ subtitle: Some work I've done
 css: assets/stylesheets/project-page.css
 ---
 <div class="row">
-	<div class="project">
+	<!-- <div class="project">
 		<div class="thumbnail">
 			<img src="https://vietanhdev.com/hiDictionary/screenshot.png" alt="từ điển hiDictionary">
 		</div>
@@ -94,5 +94,5 @@ css: assets/stylesheets/project-page.css
 			<p>2048 game written in Pascal</p>
 			<p><a href="https://vietanhdev.com/projects/2048-pascal/2048.zip" class="btn btn-primary" role="button">Download</a></p>
 		</div>
-	</div>
+	</div> -->
 </div>

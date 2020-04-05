@@ -1,0 +1,60 @@
+I"4<p>Link hướng dẫn cài đặt và sử dụng các chức năng: <a href="http://tuhdo.github.io/c-ide.html">http://tuhdo.github.io/c-ide.html</a></p>
+
+<p>Sau đây là vài thứ cơ bản ko cần đọc cái bên trên cài và dùng luôn đã »</p>
+
+<p>Anh em thực hiện cài đặt:</p>
+
+<p>Mở <strong>Terminal</strong>, gõ lệnh:</p>
+
+<p><code class="highlighter-rouge">git clone https://github.com/tuhdo/emacs-c-ide-demo.git ~/.emacs.d</code></p>
+
+<p>Nếu hiện thông báo đã tồn tại thư mục ` ~/.emacs.d` (thư mục cấu hình của emacs) thì ae gõ lệnh sau để xóa nó (có thể gần nhập pass su); và gõ lại lệnh trên.</p>
+
+<p><code class="highlighter-rouge">sudo rm -r ~/.emacs.d</code></p>
+
+<p>Vậy là mở Emacs lên sử dụng thôi (Lưu ý là lần đầu mở lại nó phải cài đặt một số thứ nên chịu khó chờ chút. Những lần sau sẽ nhanh hơn) »</p>
+
+<p><code class="highlighter-rouge">emacs&amp;</code></p>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/emacs.png" alt="Emacs" /></p>
+
+<p>Vừa mở lên C-x C-f tạo file mới (file mã nguồn ngôn ngữ C có đuôi .c nhé), ae thấy ngay cái file browser ngon hơn cái mặc định rồi.</p>
+
+<p>Khi biên dịch ấn F5 là ok thôi. Nhưng đợi chút. Khi biên dịch ta phải viết cái Makefile – file cấu hình biên dịch và thực thi của dự án. Cái này không phải đồ thừa mà hầu hết các dự án C thực tế đều cần nhé.</p>
+
+<h3 id="2-viết-makefile-biên-dịch-chạy">2. Viết Makefile, biên dịch, chạy:</h3>
+
+<p>Tạo 1 file có tên ‘Makefile’ cùng thư mục với file mã nguồn. Cái này chứa các lệnh biên dịch và thực thi để ae không phải gõ lại mỗi lúc cần dịch và chạy chương trình nhé.</p>
+
+<p>Nội dung Makefile cơ bản nhất cho biên dịch C:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>build:
+	gcc -o hello hello.c
+run:
+	./hello
+</code></pre></div></div>
+
+<p>Thay hết hello thành tên file mã nguồn tương ứng nhé.</p>
+
+<p>Nếu ae muốn ấn F5 vừa biên dịch xong chạy luôn chương trình trong cửa sổ emacs như hình dưới thì sử dụng Makefile như sau (thay tên hello &gt; tên file nguồn của bạn):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>build:
+	gcc -o hello hello.c &amp;&amp; ./hello
+run:
+	./hello
+</code></pre></div></div>
+
+<p>Bonus thêm nội dung chương trình mẫu V.A sử dụng:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello Viet Anh"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/emacs-start.png" alt="Cấu hình Emacs để lập trình C" /></p>
+
+<p>Trên đây là cơ bản cấu hình Emacs cho người mới bắt đầu. Đọc thêm các chức năng khác của bộ cấu hình chúng ta vừa sử dụng tại đây nhé: <a href="http://tuhdo.github.io/c-ide.html">http://tuhdo.github.io/c-ide.html</a></p>
+
+<p>Tìm hiểu thêm về Makefile: <a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makeassets/images.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makeassets/images.html</a></p>
+:ET

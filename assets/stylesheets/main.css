@@ -20,6 +20,9 @@ a {
     text-decoration: none;
     font-weight: bold;
 }
+img.rounded-corners{
+  border-radius: 50%;
+}
 img {
     max-width: 100%;
 }

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <link rel="icon" href="/favicon.ico?" type="img/x-ico">
+
+  <!-- Page info tags -->
+<meta name="author" content="Connor Yimin Wang" />
+
+<title>Thiết lập Sublime Text 3 để biên dịch và chạy ngôn ngữ C</title>
+
+
+
+<meta name="description" content="## 1. Trước hết bạn phải tải và cài đặt Sublime Text 3: [Xem hướng dẫn cài đặt Sublime text 3]({{ site.url }}{{ site.baseurl }}/huong-dan-cai-dat-sublime-text-3). ## 2. Tiếp đó cài đặt gcc để biên dịch ngôn ngữ c: Mở **Terminal** (Ctrl + Alt +t) và gõ lần lượt các lệnh...">
+
+
+<link rel="alternate" type="application/rss+xml" title="Connor Wang - Ambisnail is a small website. Suitable for personal Websites & Blogs.
+" href="/feed.xml" />
+
+  <!-- Facebook OpenGraph tags -->
+
+  <meta property="fb:app_id" content="12345" />
+  
+
+  
+  <meta property="og:title" content="Thiết lập Sublime Text 3 để biên dịch và chạy ngôn ngữ C" />
+  
+
+   
+  <meta property="og:description" content="## 1. Trước hết bạn phải tải và cài đặt Sublime Text 3: [Xem hướng dẫn cài đặt Sublime text 3]({{ site.url }}{{ site.baseurl }}/huong-dan-cai-dat-sublime-text-3). ## 2. Tiếp đó cài đặt gcc để biên dịch ngôn ngữ c: Mở **Terminal** (Ctrl + Alt +t) và gõ lần lượt các lệnh...">
+  
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-26-thiet-lap-sublime-text-3-de-bien-dich-va-chay-ngon-ngu-c" />
+  <link rel="canonical" href="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-26-thiet-lap-sublime-text-3-de-bien-dich-va-chay-ngon-ngu-c" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/homepage.jpg" />
+  
+    <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Thiết lập Sublime Text 3 để biên dịch và chạy ngôn ngữ C" />
+  
+
+  
+  <meta name="twitter:description" content="## 1. Trước hết bạn phải tải và cài đặt Sublime Text 3: [Xem hướng dẫn cài đặt Sublime text 3]({{ site.url }}{{ site.baseurl }}/huong-dan-cai-dat-sublime-text-3). ## 2. Tiếp đó cài đặt gcc để biên dịch ngôn ngữ c: Mở **Terminal** (Ctrl + Alt +t) và gõ lần lượt các lệnh...">
+  
+
+  
+  
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/main.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+
+
+</head>
+
+    <body>
+        <nav id="top-bar">
+    <div id="dropdown-wrapper">
+         <i id="dropdown-btn" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+         <div id="dropdown-menu">
+            <div id="search-wrapper">
+                <form method="GET" action="http://localhost:4000/search/">
+                    <input id="search-box" type="text" name="keyword" placeholder="type & enter to search">
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+            <div class="vline"></div>
+            <div id="theme-selector">
+                <span style="vertical-align:middle;">Light theme&nbsp;</span>
+                <label style="vertical-align:middle;" class="switch">
+                    <input id="theme-select" type="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span style="vertical-align:middle;">&nbsp;Dark theme</span>
+            </div>
+         </div>
+    </div>
+    <div class="menu-nojs">
+      <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+    </div>
+    <div id="site-title"><a href="http://localhost:4000/"> Connor Wang </a></div>
+</nav>
+
+        
+    <div class="header-content">
+        <h1 class="page-title">Thiết lập Sublime Text 3 để biên dịch và chạy ngôn ngữ C</h1>
+        <span class="post-meta">Posted on July 26, 2016<br>
+        Reading time: 
+
+
+    1 min
+</span>
+    </div>
+
+        
+<div class="container">
+    <h2 id="1-trước-hết-bạn-phải-tải-và-cài-đặt-sublime-text-3">1. Trước hết bạn phải tải và cài đặt Sublime Text 3:</h2>
+
+<p><a href="http://localhost:4000/huong-dan-cai-dat-sublime-text-3">Xem hướng dẫn cài đặt Sublime text 3</a>.</p>
+
+<h2 id="2-tiếp-đó-cài-đặt-gcc-để-biên-dịch-ngôn-ngữ-c">2. Tiếp đó cài đặt gcc để biên dịch ngôn ngữ c:</h2>
+<p>Mở <strong>Terminal</strong> (Ctrl + Alt +t) và gõ lần lượt các lệnh sau để cài đặt gói <strong>build-essential</strong>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>build-essential
+</code></pre></div></div>
+
+<h2 id="3-cấu-hình-build-system-cho-sublime-text-để-biên-dịch-và-chạy-c">3. Cấu hình Build system cho Sublime Text để biên dịch và chạy C:</h2>
+<p>Mở <strong>Sublime Text 3</strong>, chọn menu <strong>Tools &gt; Build System &gt; New Build System…</strong></p>
+
+<p>Chèn đoạn mã sau và lưu lại dưới tên <strong>GCC.sublime-build</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+<span class="dl">"</span><span class="s2">shell_cmd</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">gcc $file_name -o ${file_base_name}</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">working_dir</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">$file_path</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">variants</span><span class="dl">"</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Run</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">shell_cmd</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">gcc $file_name -o ${file_base_name} &amp;amp;&amp;amp; ${file_path}/${file_base_name}</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/Bien-dich-c-Sublime-Text-3.png" alt="Build C trong Sublime Text 3" /></p>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/Luu-build-file-c-Sublime-Text-3.png" alt="Lưu build file C trong Sublime Text 3" /></p>
+
+</div>
+
+        <footer>
+    <p>The website of <b>Connor Yimin Wang</b></p>
+    <p>Ambisnail (c) made by <a href="https://ambisnail.github.io">Connor Wang</a></p>
+</footer>
+
+        <style>
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+    </body>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/main.js"></script>
+
+    <script src="http://localhost:4000/assets/scripts/return-to-top.js"></script>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,34 @@
+I"
+<h2 id="1-trước-hết-bạn-phải-tải-và-cài-đặt-sublime-text-3">1. Trước hết bạn phải tải và cài đặt Sublime Text 3:</h2>
+
+<p><a href="http://localhost:4000/huong-dan-cai-dat-sublime-text-3">Xem hướng dẫn cài đặt Sublime text 3</a>.</p>
+
+<h2 id="2-tiếp-đó-cài-đặt-gcc-để-biên-dịch-ngôn-ngữ-c">2. Tiếp đó cài đặt gcc để biên dịch ngôn ngữ c:</h2>
+<p>Mở <strong>Terminal</strong> (Ctrl + Alt +t) và gõ lần lượt các lệnh sau để cài đặt gói <strong>build-essential</strong>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>build-essential
+</code></pre></div></div>
+
+<h2 id="3-cấu-hình-build-system-cho-sublime-text-để-biên-dịch-và-chạy-c">3. Cấu hình Build system cho Sublime Text để biên dịch và chạy C:</h2>
+<p>Mở <strong>Sublime Text 3</strong>, chọn menu <strong>Tools &gt; Build System &gt; New Build System…</strong></p>
+
+<p>Chèn đoạn mã sau và lưu lại dưới tên <strong>GCC.sublime-build</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+<span class="dl">"</span><span class="s2">shell_cmd</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">gcc $file_name -o ${file_base_name}</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">working_dir</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">$file_path</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">variants</span><span class="dl">"</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Run</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">shell_cmd</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">gcc $file_name -o ${file_base_name} &amp;amp;&amp;amp; ${file_path}/${file_base_name}</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/Bien-dich-c-Sublime-Text-3.png" alt="Build C trong Sublime Text 3" /></p>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/Luu-build-file-c-Sublime-Text-3.png" alt="Lưu build file C trong Sublime Text 3" /></p>
+:ET

@@ -1,0 +1,29 @@
+I"�<p><strong>Các thành phần của một chương trình C cơ bản bao gồm:</strong></p>
+
+<ul>
+  <li>Các lệnh tiền xử lí</li>
+  <li>Các hàm</li>
+  <li>Các biến</li>
+  <li>Các lệnh và biểu thức</li>
+  <li>Các comment (ghi chú về code giúp ích cho công tác bảo trì và nâng cấp)</li>
+</ul>
+
+<p>Chúng ta hãy cùng nghiên cứu chương trình Hello World – Chào thế giới trong ngôn ngữ C. Chương trình này có chức năng in dòng chữ “Hello World!” lên màn hình máy tính. Tên thành phần của chương trình đã được tôi comment bên cạnh mỗi dòng code (sử dụng cặp dấu /* */). Bạn cũng có thể sử dụng cặp // để đánh dấu phần sau đó cho tới cuối dòng code là comment.</p>
+
+<p><strong>Mã nguồn:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="cm">/* Đây là lệnh tiền xử lí, thông báo cho trình biên dịch biết
+chương trình của chúng ta sử dụng thư viện stdio.h */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">//Hàm main - nơi chương trình C bắt đầu thực thi</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello World! n"</span><span class="p">);</span>  <span class="c1">//Câu lệnh in ra dòng chữ Hello World!</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//Giá trị trả về của hàm</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Các bạn hãy Copy toàn bộ các dòng code trên, paste vào Geany và lưu lại dưới tên hello.c nhé. (file mã nguồn chương trình ngôn ngữ C có đuôi .c ).</p>
+
+<p>Tiếp đó chọn menu <strong>Build &gt; Build (F9)</strong> để biên dịch. Và <strong>Build &gt; Excute (F5)</strong> để chạy chương trình đã biên dịch nhé.</p>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/bien-dich-Hello-world-c.png" alt="Biên dịch chương trình C" /></p>
+:ET

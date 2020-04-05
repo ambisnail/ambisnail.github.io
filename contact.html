@@ -6,12 +6,12 @@ css: "assets/stylesheets/contact-page.css"
 js: "assets/scripts/contact-page.js"
 ---
 
-<h3>Bạn có thể gửi cho tôi một tin nhắn qua form bên dưới:</h3>
+<h3>Send me a message via this page / 从这一页给我发消息:</h3>
 
 <form id="contact-form" method="POST" action="https://formspree.io/{{ site.contact-email }}">
   <input type="text" name="_gotcha" style="display:none" />
-  <input type="email" name="email" placeholder="Email">
-  <input type="text" name="website" placeholder="Your name / Tên bạn">
-  <textarea name="message" placeholder="Message / Nội dung tin nhắn"></textarea>
-  <input type="submit" class="btn btn-lg btn-primary" value="Send / Gửi đi"></input>
+  <input type="email" name="email" placeholder="Email / 你的邮箱">
+  <input type="text" name="website" placeholder="Your name / 你的名字">
+  <textarea name="message" placeholder="Message / 信息"></textarea>
+  <input type="submit" class="btn btn-lg btn-primary" value="Send / 发送"></input>
 </form>

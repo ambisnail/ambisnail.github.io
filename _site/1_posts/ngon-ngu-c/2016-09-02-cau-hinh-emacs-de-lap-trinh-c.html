@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <link rel="icon" href="/favicon.ico?" type="img/x-ico">
+
+  <!-- Page info tags -->
+<meta name="author" content="Connor Yimin Wang" />
+
+<title>Cấu hình Emacs để lập trình C</title>
+
+
+
+<meta name="description" content="Link hướng dẫn cài đặt và sử dụng các chức năng: [http://tuhdo.github.io/c-ide.html](http://tuhdo.github.io/c-ide.html) Sau đây là vài thứ cơ bản ko cần đọc cái bên trên cài và dùng luôn đã &gt;&gt; Anh em thực hiện cài đặt: Mở **Terminal**, gõ lệnh: `git clone https://github.com/tuhdo/emacs-c-ide-demo.git ~/.emacs.d` Nếu hiện thông báo đã...">
+
+
+<link rel="alternate" type="application/rss+xml" title="Connor Wang - Ambisnail is a small website. Suitable for personal Websites & Blogs.
+" href="/feed.xml" />
+
+  <!-- Facebook OpenGraph tags -->
+
+  <meta property="fb:app_id" content="12345" />
+  
+
+  
+  <meta property="og:title" content="Cấu hình Emacs để lập trình C" />
+  
+
+   
+  <meta property="og:description" content="Link hướng dẫn cài đặt và sử dụng các chức năng: [http://tuhdo.github.io/c-ide.html](http://tuhdo.github.io/c-ide.html) Sau đây là vài thứ cơ bản ko cần đọc cái bên trên cài và dùng luôn đã &gt;&gt; Anh em thực hiện cài đặt: Mở **Terminal**, gõ lệnh: `git clone https://github.com/tuhdo/emacs-c-ide-demo.git ~/.emacs.d` Nếu hiện thông báo đã...">
+  
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/1_posts/ngon-ngu-c/2016-09-02-cau-hinh-emacs-de-lap-trinh-c" />
+  <link rel="canonical" href="http://localhost:4000/1_posts/ngon-ngu-c/2016-09-02-cau-hinh-emacs-de-lap-trinh-c" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/homepage.jpg" />
+  
+    <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Cấu hình Emacs để lập trình C" />
+  
+
+  
+  <meta name="twitter:description" content="Link hướng dẫn cài đặt và sử dụng các chức năng: [http://tuhdo.github.io/c-ide.html](http://tuhdo.github.io/c-ide.html) Sau đây là vài thứ cơ bản ko cần đọc cái bên trên cài và dùng luôn đã &gt;&gt; Anh em thực hiện cài đặt: Mở **Terminal**, gõ lệnh: `git clone https://github.com/tuhdo/emacs-c-ide-demo.git ~/.emacs.d` Nếu hiện thông báo đã...">
+  
+
+  
+  
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/main.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+
+
+</head>
+
+    <body>
+        <nav id="top-bar">
+    <div id="dropdown-wrapper">
+         <i id="dropdown-btn" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+         <div id="dropdown-menu">
+            <div id="search-wrapper">
+                <form method="GET" action="http://localhost:4000/search/">
+                    <input id="search-box" type="text" name="keyword" placeholder="type & enter to search">
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+            <div class="vline"></div>
+            <div id="theme-selector">
+                <span style="vertical-align:middle;">Light theme&nbsp;</span>
+                <label style="vertical-align:middle;" class="switch">
+                    <input id="theme-select" type="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span style="vertical-align:middle;">&nbsp;Dark theme</span>
+            </div>
+         </div>
+    </div>
+    <div class="menu-nojs">
+      <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+    </div>
+    <div id="site-title"><a href="http://localhost:4000/"> Connor Wang </a></div>
+</nav>
+
+        
+    <div class="header" style="background: url(http://localhost:4000/assets/images/ngon-ngu-c/shareimg.jpg); background-size: 100%">
+        <div class="header-content">
+            <h1 class="page-title white-text">Cấu hình Emacs để lập trình C</h1>
+            <span class="post-meta">Posted on September 2, 2016<br>
+            Reading time: 
+
+
+    2 mins
+</span>
+        </div>
+    </div>
+
+        
+<div class="container">
+    <p>Link hướng dẫn cài đặt và sử dụng các chức năng: <a href="http://tuhdo.github.io/c-ide.html">http://tuhdo.github.io/c-ide.html</a></p>
+
+<p>Sau đây là vài thứ cơ bản ko cần đọc cái bên trên cài và dùng luôn đã »</p>
+
+<p>Anh em thực hiện cài đặt:</p>
+
+<p>Mở <strong>Terminal</strong>, gõ lệnh:</p>
+
+<p><code class="highlighter-rouge">git clone https://github.com/tuhdo/emacs-c-ide-demo.git ~/.emacs.d</code></p>
+
+<p>Nếu hiện thông báo đã tồn tại thư mục ` ~/.emacs.d` (thư mục cấu hình của emacs) thì ae gõ lệnh sau để xóa nó (có thể gần nhập pass su); và gõ lại lệnh trên.</p>
+
+<p><code class="highlighter-rouge">sudo rm -r ~/.emacs.d</code></p>
+
+<p>Vậy là mở Emacs lên sử dụng thôi (Lưu ý là lần đầu mở lại nó phải cài đặt một số thứ nên chịu khó chờ chút. Những lần sau sẽ nhanh hơn) »</p>
+
+<p><code class="highlighter-rouge">emacs&amp;</code></p>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/emacs.png" alt="Emacs" /></p>
+
+<p>Vừa mở lên C-x C-f tạo file mới (file mã nguồn ngôn ngữ C có đuôi .c nhé), ae thấy ngay cái file browser ngon hơn cái mặc định rồi.</p>
+
+<p>Khi biên dịch ấn F5 là ok thôi. Nhưng đợi chút. Khi biên dịch ta phải viết cái Makefile – file cấu hình biên dịch và thực thi của dự án. Cái này không phải đồ thừa mà hầu hết các dự án C thực tế đều cần nhé.</p>
+
+<h3 id="2-viết-makefile-biên-dịch-chạy">2. Viết Makefile, biên dịch, chạy:</h3>
+
+<p>Tạo 1 file có tên ‘Makefile’ cùng thư mục với file mã nguồn. Cái này chứa các lệnh biên dịch và thực thi để ae không phải gõ lại mỗi lúc cần dịch và chạy chương trình nhé.</p>
+
+<p>Nội dung Makefile cơ bản nhất cho biên dịch C:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>build:
+	gcc -o hello hello.c
+run:
+	./hello
+</code></pre></div></div>
+
+<p>Thay hết hello thành tên file mã nguồn tương ứng nhé.</p>
+
+<p>Nếu ae muốn ấn F5 vừa biên dịch xong chạy luôn chương trình trong cửa sổ emacs như hình dưới thì sử dụng Makefile như sau (thay tên hello &gt; tên file nguồn của bạn):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>build:
+	gcc -o hello hello.c &amp;&amp; ./hello
+run:
+	./hello
+</code></pre></div></div>
+
+<p>Bonus thêm nội dung chương trình mẫu V.A sử dụng:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello Viet Anh"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/ngon-ngu-c/emacs-start.png" alt="Cấu hình Emacs để lập trình C" /></p>
+
+<p>Trên đây là cơ bản cấu hình Emacs cho người mới bắt đầu. Đọc thêm các chức năng khác của bộ cấu hình chúng ta vừa sử dụng tại đây nhé: <a href="http://tuhdo.github.io/c-ide.html">http://tuhdo.github.io/c-ide.html</a></p>
+
+<p>Tìm hiểu thêm về Makefile: <a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makeassets/images.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makeassets/images.html</a></p>
+
+</div>
+
+        <footer>
+    <p>The website of <b>Connor Yimin Wang</b></p>
+    <p>Ambisnail (c) made by <a href="https://ambisnail.github.io">Connor Wang</a></p>
+</footer>
+
+        <style>
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+    </body>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/main.js"></script>
+
+    <script src="http://localhost:4000/assets/scripts/return-to-top.js"></script>
+
+
+
+
+
+
+</html>

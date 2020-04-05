@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <link rel="icon" href="/favicon.ico?" type="img/x-ico">
+
+  <!-- Page info tags -->
+<meta name="author" content="Connor Yimin Wang" />
+
+<title>Toán tử trong C</title>
+
+
+
+<meta name="description" content="**Định nghĩa toán tử trong [Wikipedia]:** &gt; Trong toán học, một **toán tử** (tiếng Anh *operator*, phân biệt với *operation* - phép toán) là một hàm, thông thường có một vai trò quan trọng trong một lĩnh vực nào đấy. Chẳng hạn trong đại số tuyến tính có “toán tử...">
+
+
+<link rel="alternate" type="application/rss+xml" title="Connor Wang - Ambisnail is a small website. Suitable for personal Websites & Blogs.
+" href="/feed.xml" />
+
+  <!-- Facebook OpenGraph tags -->
+
+  <meta property="fb:app_id" content="12345" />
+  
+
+  
+  <meta property="og:title" content="Toán tử trong C" />
+  
+
+   
+  <meta property="og:description" content="**Định nghĩa toán tử trong [Wikipedia]:** &gt; Trong toán học, một **toán tử** (tiếng Anh *operator*, phân biệt với *operation* - phép toán) là một hàm, thông thường có một vai trò quan trọng trong một lĩnh vực nào đấy. Chẳng hạn trong đại số tuyến tính có “toán tử...">
+  
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-28-toan-tu-trong-c" />
+  <link rel="canonical" href="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-28-toan-tu-trong-c" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/homepage.jpg" />
+  
+    <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Toán tử trong C" />
+  
+
+  
+  <meta name="twitter:description" content="**Định nghĩa toán tử trong [Wikipedia]:** &gt; Trong toán học, một **toán tử** (tiếng Anh *operator*, phân biệt với *operation* - phép toán) là một hàm, thông thường có một vai trò quan trọng trong một lĩnh vực nào đấy. Chẳng hạn trong đại số tuyến tính có “toán tử...">
+  
+
+  
+  
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/main.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+
+
+</head>
+
+    <body>
+        <nav id="top-bar">
+    <div id="dropdown-wrapper">
+         <i id="dropdown-btn" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+         <div id="dropdown-menu">
+            <div id="search-wrapper">
+                <form method="GET" action="http://localhost:4000/search/">
+                    <input id="search-box" type="text" name="keyword" placeholder="type & enter to search">
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+            <div class="vline"></div>
+            <div id="theme-selector">
+                <span style="vertical-align:middle;">Light theme&nbsp;</span>
+                <label style="vertical-align:middle;" class="switch">
+                    <input id="theme-select" type="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span style="vertical-align:middle;">&nbsp;Dark theme</span>
+            </div>
+         </div>
+    </div>
+    <div class="menu-nojs">
+      <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+    </div>
+    <div id="site-title"><a href="http://localhost:4000/"> Connor Wang </a></div>
+</nav>
+
+        
+    <div class="header-content">
+        <h1 class="page-title">Toán tử trong C</h1>
+        <span class="post-meta">Posted on July 28, 2016<br>
+        Reading time: 
+
+
+    8 mins
+</span>
+    </div>
+
+        
+<div class="container">
+    <p><strong>Định nghĩa toán tử trong [Wikipedia]:</strong></p>
+
+<blockquote>
+  <p>Trong toán học, một <strong>toán tử</strong> (tiếng Anh <em>operator</em>, phân biệt với <em>operation</em> - phép toán) là một hàm, thông thường có một vai trò quan trọng trong một lĩnh vực nào đấy. Chẳng hạn trong đại số tuyến tính có “toán tử tuyến tính” (<em>linear operator</em>). Trong giải tích có “toán tử vi phân” (<em>differential operator</em>)… Thông thường, một “toán tử” là một hàm tác động lên các hàm khác; hoặc nó có thể là tổng quát hóa của một hàm, như trong đại số tuyến tính.</p>
+</blockquote>
+
+<p><strong>Các kiểu toán tử trong C:</strong></p>
+
+<ul>
+  <li>Toán tử số học</li>
+  <li>Toán tử quan hệ</li>
+  <li>Toán tử logic</li>
+  <li>Toán tử so sánh bit</li>
+  <li>Toán tử gán</li>
+  <li>Toán tử hỗn hợp</li>
+</ul>
+
+<h2 id="toán-tử-số-học">Toán tử số học:</h2>
+
+<p>Giả sử khai báo: <code class="highlighter-rouge">int A=5, B=6; float C=1.2;</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Toán tử</th>
+      <th>Miêu tả</th>
+      <th>Ví dụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">+</code></td>
+      <td>Cộng 2 toán hạng</td>
+      <td>A + B sẽ cho kết quả là 11</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">-</code></td>
+      <td>Trừ 2 toán hạng</td>
+      <td>A - B sẽ cho kết quả là -1</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">*</code></td>
+      <td>Nhân 2 toán hạng</td>
+      <td>A * B sẽ cho kết quả là 30</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">/</code></td>
+      <td>Chia 2 toán hạng</td>
+      <td>B / A sẽ cho kết quả là 0 (2 toán hạng đều là số nguyên  thì kết quả là phần nguyên của thương) A / C sẽ cho kết quả là 4.166667 (1 trong 2 toán hạng là số thực dấu phẩy động thì thương là số thực dấu phẩy động)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%</code></td>
+      <td>Chia lấy phần dư</td>
+      <td>B % A sẽ cho kết quả là 1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="toán-tử-so-sánhquan-hệ-trả-về-giá-trị-là-true-đúng-hoặc-false-sai">Toán tử so sánh(quan hệ): Trả về giá trị là true (đúng) hoặc false (sai)</h2>
+
+<p><code class="highlighter-rouge">int A=5, B=6;</code></p>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;</code> (nhỏ hơn)      <code class="highlighter-rouge">A &lt; B</code> -&gt; <em>true</em></li>
+  <li><code class="highlighter-rouge">&lt;=</code> (nhỏ hơn hoặc bằng)      <code class="highlighter-rouge">A &lt;= B</code> -&gt; <em>true</em></li>
+  <li><code class="highlighter-rouge">&gt;</code> (lớn hơn)      <code class="highlighter-rouge">A &gt; B</code> -&gt; false</li>
+  <li><code class="highlighter-rouge">&gt;=</code> (lớn hơn hoặc bằng)      <code class="highlighter-rouge">A &gt;= B</code> -&gt; <em>false</em></li>
+  <li><code class="highlighter-rouge">==</code> (bằng)      <code class="highlighter-rouge">A == B</code>  -&gt; <em>false</em></li>
+  <li><code class="highlighter-rouge">!=</code> (khác)      <code class="highlighter-rouge">A != B</code> -&gt; <em>true</em></li>
+</ul>
+
+<h2 id="toán-tử-logic-trả-về-giá-trị-là-true-đúng-hoặc-false-sai">Toán tử logic: Trả về giá trị là true (đúng) hoặc false (sai)</h2>
+
+<p>Trong ngôn ngữ C, 2 trạng thái true(đúng) và false(sai) được biểu diễn bởi các số nguyên int:</p>
+
+<ul>
+  <li>Số 0 biểu diễn cho trạng thái false (sai).</li>
+  <li>Tất cả các số nguyên khác 0 biểu diễn cho trạng thái true (đúng).</li>
+</ul>
+
+<p><strong>Các toán tử logic:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">&amp;&amp;</code> (and)   trả về true khi cả 2 toán hạng đều đúng. Ngược lại trả về false.
+    <ul>
+      <li><code class="highlighter-rouge">(5&lt;6) &amp;&amp; (7&lt;8)</code>  -&gt;  <em>true</em></li>
+      <li><code class="highlighter-rouge">(5&gt;6) &amp;&amp; (7&lt;8)</code>  -&gt;  <em>false</em></li>
+      <li><code class="highlighter-rouge">(5&gt;6) &amp;&amp; (7&gt;8)</code>  -&gt;  <em>false</em></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">||</code> (or)  trả về true khi ít nhất một trong 2 toán hạng đúng. Ngược lại trả về false.
+    <ul>
+      <li><code class="highlighter-rouge">(5&lt;6) &amp;&amp; (7&lt;8)</code>  -&gt;  <em>true</em></li>
+      <li><code class="highlighter-rouge">(5&gt;6) &amp;&amp; (7&lt;8)</code>  -&gt;  <em>true</em></li>
+      <li><code class="highlighter-rouge">(5&gt;6) &amp;&amp; (7&gt;8)</code>  -&gt;  <em>false</em></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">!</code> (not) trả về true khi toán hạng (đằng sau dấu <code class="highlighter-rouge">!</code> sai). Ngược lại trả về false.
+    <ul>
+      <li><code class="highlighter-rouge">!(7&gt;8)</code>  -&gt;  <em>true</em></li>
+      <li><code class="highlighter-rouge">!(7&lt;8)</code>  -&gt;  <em>false</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="toán-tử-thao-tác-trên-bit">Toán tử thao tác trên bit:</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">&amp;</code> (and bit)</li>
+  <li><code class="highlighter-rouge">|</code> (or bit)</li>
+  <li><code class="highlighter-rouge">~</code> (phủ định)</li>
+  <li><code class="highlighter-rouge">&gt;&gt;</code> (dịch bit sang phải)</li>
+  <li><code class="highlighter-rouge">&lt;&lt;</code> (dịch bit sang trái)</li>
+</ul>
+
+<h2 id="toán-tử-gán">Toán tử gán</h2>
+
+<p>Sử dụng dấu <code class="highlighter-rouge">=</code> cho việc gán giá trị vào biến.</p>
+
+<p><strong>Ví dụ:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// Gán cho a giá trị là 5</span>
+	<span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// Gán cho b và c giá trị bằng giá trị của a</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Các toán tử gán mở rộng:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Toán tử</th>
+      <th>Ví dụ</th>
+      <th>Tương đương với</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">+=</code></td>
+      <td><code class="highlighter-rouge">C += A</code></td>
+      <td><code class="highlighter-rouge">C = C + A</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">-=</code></td>
+      <td><code class="highlighter-rouge">C -= A</code></td>
+      <td><code class="highlighter-rouge">C = C - A</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">*=</code></td>
+      <td><code class="highlighter-rouge">C *= A</code></td>
+      <td><code class="highlighter-rouge">C = C * A</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">/=</code></td>
+      <td><code class="highlighter-rouge">C /= A</code></td>
+      <td><code class="highlighter-rouge">C = C / A</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%=</code></td>
+      <td><code class="highlighter-rouge">C %= A</code></td>
+      <td><code class="highlighter-rouge">C = C % A</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;&lt;=</code></td>
+      <td><code class="highlighter-rouge">C &lt;&lt;= 2</code></td>
+      <td><code class="highlighter-rouge">C = C &lt;&lt; 2</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&gt;&gt;=</code></td>
+      <td><code class="highlighter-rouge">C &gt;&gt;= 2</code></td>
+      <td><code class="highlighter-rouge">C = C &gt;&gt; 2</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&amp;=</code></td>
+      <td><code class="highlighter-rouge">C &amp;= 2</code></td>
+      <td><code class="highlighter-rouge">C = C &amp; 2</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">^=</code></td>
+      <td><code class="highlighter-rouge">C ^= 2</code></td>
+      <td><code class="highlighter-rouge">C = C ^ 2</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">|=</code></td>
+      <td><code class="highlighter-rouge">C |= 2</code></td>
+      <td><code class="highlighter-rouge">C = C | 2</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="toán-tử-tăng-giảm">Toán tử tăng giảm</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">++</code> là toán tử tăng
+    <ul>
+      <li><code class="highlighter-rouge">++i</code> tương đương với <code class="highlighter-rouge">i = i + 1</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">--</code> là toán tử giảm
+    <ul>
+      <li><code class="highlighter-rouge">--i</code> tương đương với <code class="highlighter-rouge">i = i - 1</code></li>
+    </ul>
+  </li>
+  <li>Có 2 cách viết <code class="highlighter-rouge">++i</code> và <code class="highlighter-rouge">i++</code> nhưng ý nghĩa của chúng khác nhau:
+    <ul>
+      <li><code class="highlighter-rouge">++i</code> thì i được tăng trước sau đó sẽ lấy kết quả để thực hiện biểu thức</li>
+      <li><code class="highlighter-rouge">i++</code> thì i được đưa vào thực hiện biểu thức trước sau đó mới tăng i lên.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="một-số-toán-tử-khác">Một số toán tử khác</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Toán tử</th>
+      <th>Miêu tả</th>
+      <th>Ví dụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">sizeof()</code></td>
+      <td>Trả lại kích cỡ của một biến</td>
+      <td><code class="highlighter-rouge">sizeof(a)</code>, với a là integer, thì sẽ trả lại kết quả là 4.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&amp;</code></td>
+      <td>Trả lại địa chỉ của một biến.</td>
+      <td><code class="highlighter-rouge">&amp;a</code> sẽ cho địa chỉ thực sự của biến a.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">*</code></td>
+      <td>Trỏ tới một biến.</td>
+      <td><code class="highlighter-rouge">*a</code> sẽ trỏ tới biến a.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;điều kiện&gt;? X:Y</code></td>
+      <td>Biểu thức điều kiện</td>
+      <td>Nếu điều kiện đúng ? thì trả về giá trị X : Nếu không thì trả về giá trị Y</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;toán hạng 1&gt;,&lt;toán hạng 2&gt;</code></td>
+      <td>Ước lượng giá trị toán hạng 1, ước lượng giá trị toán hạng 2 và trả về giá trị toán hạng 2 là giá trị cuối cùng</td>
+      <td><code class="highlighter-rouge">t = (x=10, x+5)</code> sẽ gán giá trị x &lt;- 10; thực hiện phép tính x + 5 = 10 + 5 = 15 và gán giá trị 15 cho t</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="bảng-thứ-tự-ưu-tiên-thực-hiện-của-toán-tử-theo-thứ-tự-giảm-dần-mức-độ-ưu-tiên">Bảng thứ tự ưu tiên thực hiện của toán tử (theo thứ tự giảm dần mức độ ưu tiên):</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Loại</th>
+      <th>Toán tử</th>
+      <th>Thứ tự ưu tiên</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Postfix</td>
+      <td><code class="highlighter-rouge">() [] -&gt; . ++ - -</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Unary</td>
+      <td><code class="highlighter-rouge">+ - ! ~ ++ - - (type) * &amp; sizeof</code></td>
+      <td>Phải sang trái</td>
+    </tr>
+    <tr>
+      <td>Tính nhân</td>
+      <td><code class="highlighter-rouge">* / %</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Tính cộng</td>
+      <td><code class="highlighter-rouge">+ -</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Dịch chuyển bit</td>
+      <td><code class="highlighter-rouge">&lt;&lt; &gt;&gt;</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>So sánh không ngang bằng</td>
+      <td><code class="highlighter-rouge">&lt; &lt;= &gt; &gt;=</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>So sánh ngang bằng</td>
+      <td><code class="highlighter-rouge">== !=</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Phép AND bit</td>
+      <td><code class="highlighter-rouge">&amp;</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Phép XOR bit</td>
+      <td><code class="highlighter-rouge">^</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Phép OR bit</td>
+      <td><code class="highlighter-rouge">|</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Phép AND logic</td>
+      <td><code class="highlighter-rouge">&amp;&amp;</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Phép OR logic</td>
+      <td><code class="highlighter-rouge">||</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+    <tr>
+      <td>Điều kiện</td>
+      <td><code class="highlighter-rouge">? :</code></td>
+      <td>Phải sang trái</td>
+    </tr>
+    <tr>
+      <td>Gán</td>
+      <td><code class="highlighter-rouge">= += -= *= = %= &gt;&gt;= &lt;&lt;= &amp;= ^= |=</code></td>
+      <td>Phải sang trái</td>
+    </tr>
+    <tr>
+      <td>Dấu phảy</td>
+      <td><code class="highlighter-rouge">,</code></td>
+      <td>Trái sang phải</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="ép-kiểu">Ép kiểu:</h2>
+
+<p>Đôi khi chúng ta cần chuyển đổi giá trị một biểu thức sang kiểu dữ liệu khác. Ví dụ trong trường hợp ta muốn thực hiện phép toán chia lấy phần dư của 2 số nguyên, nhưng lại được lưu trong 2 biến kiểu float, ta không thể áp dụng trực tiếp toán tử <code class="highlighter-rouge">%</code> cho 2 biến đó. Bạn chạy chương trình thế này sẽ báo lỗi:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+	<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Vì thế cần ép kiểu theo cú pháp: <code class="highlighter-rouge">(&lt;kiểu dữ liệu&gt;) &lt;biểu thức&gt;</code> để lấy giá trị từ biến b, đổi sang số nguyên để thực hiện phép <code class="highlighter-rouge">%</code>. Code đúng như sau:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span> 
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> 
+	<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">b</span><span class="p">;</span> 
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> 
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> 
+<span class="p">}</span> 
+</code></pre></div></div>
+
+</div>
+
+        <footer>
+    <p>The website of <b>Connor Yimin Wang</b></p>
+    <p>Ambisnail (c) made by <a href="https://ambisnail.github.io">Connor Wang</a></p>
+</footer>
+
+        <style>
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+    </body>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/main.js"></script>
+
+    <script src="http://localhost:4000/assets/scripts/return-to-top.js"></script>
+
+
+
+
+
+
+</html>

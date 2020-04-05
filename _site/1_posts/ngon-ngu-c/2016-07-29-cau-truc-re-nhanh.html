@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <link rel="icon" href="/favicon.ico?" type="img/x-ico">
+
+  <!-- Page info tags -->
+<meta name="author" content="Connor Yimin Wang" />
+
+<title>Cấu trúc rẽ nhánh trong C</title>
+
+
+
+<meta name="description" content="Cấu trúc rẽ nhánh trong mỗi ngôn ngữ lập trình luôn luôn là một thành phần quan trọng. Đó là thành phần cơ bản tạo nên hầu hết các thuật toán hiện đại. Nếu bạn muốn mô tả một đoạn chương trình kiểu như: *Nếu gặp điều kiện C thì...">
+
+
+<link rel="alternate" type="application/rss+xml" title="Connor Wang - Ambisnail is a small website. Suitable for personal Websites & Blogs.
+" href="/feed.xml" />
+
+  <!-- Facebook OpenGraph tags -->
+
+  <meta property="fb:app_id" content="12345" />
+  
+
+  
+  <meta property="og:title" content="Cấu trúc rẽ nhánh trong C" />
+  
+
+   
+  <meta property="og:description" content="Cấu trúc rẽ nhánh trong mỗi ngôn ngữ lập trình luôn luôn là một thành phần quan trọng. Đó là thành phần cơ bản tạo nên hầu hết các thuật toán hiện đại. Nếu bạn muốn mô tả một đoạn chương trình kiểu như: *Nếu gặp điều kiện C thì...">
+  
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-29-cau-truc-re-nhanh" />
+  <link rel="canonical" href="http://localhost:4000/1_posts/ngon-ngu-c/2016-07-29-cau-truc-re-nhanh" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/homepage.jpg" />
+  
+    <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Cấu trúc rẽ nhánh trong C" />
+  
+
+  
+  <meta name="twitter:description" content="Cấu trúc rẽ nhánh trong mỗi ngôn ngữ lập trình luôn luôn là một thành phần quan trọng. Đó là thành phần cơ bản tạo nên hầu hết các thuật toán hiện đại. Nếu bạn muốn mô tả một đoạn chương trình kiểu như: *Nếu gặp điều kiện C thì...">
+  
+
+  
+  
+
+
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/stylesheets/main.css" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+
+
+</head>
+
+    <body>
+        <nav id="top-bar">
+    <div id="dropdown-wrapper">
+         <i id="dropdown-btn" class="fa fa-bars fa-2x" aria-hidden="true"></i>
+         <div id="dropdown-menu">
+            <div id="search-wrapper">
+                <form method="GET" action="http://localhost:4000/search/">
+                    <input id="search-box" type="text" name="keyword" placeholder="type & enter to search">
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+            <div class="vline"></div>
+            <div id="theme-selector">
+                <span style="vertical-align:middle;">Light theme&nbsp;</span>
+                <label style="vertical-align:middle;" class="switch">
+                    <input id="theme-select" type="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span style="vertical-align:middle;">&nbsp;Dark theme</span>
+            </div>
+         </div>
+    </div>
+    <div class="menu-nojs">
+      <div class="menu">
+    <a class="menu-item" href="http://localhost:4000/">
+    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+        Home
+    </a>
+    <a class="menu-item" href="http://localhost:4000/blog/">
+        <i class="fa fa-wordpress" aria-hidden="true"></i>&nbsp;
+        My Posts
+    </a>
+    <a class="menu-item" href="http://localhost:4000/projects/">
+        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;
+        My Projects
+    </a>
+    <a class="menu-item" href="http://localhost:4000/contact.html">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+        Contact me
+    </a>
+</div>
+
+    </div>
+    <div id="site-title"><a href="http://localhost:4000/"> Connor Wang </a></div>
+</nav>
+
+        
+    <div class="header-content">
+        <h1 class="page-title">Cấu trúc rẽ nhánh trong C</h1>
+        <span class="post-meta">Posted on July 29, 2016<br>
+        Reading time: 
+
+
+    6 mins
+</span>
+    </div>
+
+        
+<div class="container">
+    <p>Cấu trúc rẽ nhánh trong mỗi ngôn ngữ lập trình luôn luôn là một thành phần quan trọng. Đó là thành phần cơ bản tạo nên hầu hết các thuật toán hiện đại. Nếu bạn muốn mô tả một đoạn chương trình kiểu như: <em>Nếu gặp điều kiện C thì thực hiện hành động A, ngược lại, thực hiện hành động B</em> thì bạn chắc chắn cần sử dụng cấu trúc rẽ nhánh.</p>
+
+<h3 id="1-cấu-trúc-rẽ-nhánh-dạng-ifelse-nếu-thì">1. Cấu trúc rẽ nhánh dạng <code class="highlighter-rouge">if…else</code> (nếu… thì…)</h3>
+
+<p><strong>* Dạng đơn giản nhất: </strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">đ</span><span class="n">i</span><span class="err">ề</span><span class="n">u</span> <span class="n">ki</span><span class="err">ệ</span><span class="n">n</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span><span class="o">&gt;</span> 
+</code></pre></div></div>
+
+<p>/* Nếu <code class="highlighter-rouge">&lt;điều kiện&gt;</code> đúng thì thực hiện <code class="highlighter-rouge">&lt;hành động&gt;</code></p>
+
+<p><code class="highlighter-rouge">&lt;hành động&gt;</code> thông thường là một khối lệnh, được đặt trong cặp dấu { } */</p>
+
+<p><strong>Chương trình ví dụ:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d la so duong</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d la so am</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"a nho hon 0"</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>* Dạng mở rộng <code class="highlighter-rouge">if…else:</code></strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">đ</span><span class="n">i</span><span class="err">ề</span><span class="n">u</span> <span class="n">ki</span><span class="err">ệ</span><span class="n">n</span><span class="o">&gt;</span><span class="p">)</span>
+	<span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">1</span><span class="o">&gt;</span>
+<span class="k">else</span>
+	<span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">2</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>/* Nếu <code class="highlighter-rouge">&lt;điều kiện&gt;</code> đúng thì thực hiện <code class="highlighter-rouge">&lt;hành động 1&gt;</code> ; nếu <code class="highlighter-rouge">&lt;điều kiện&gt;</code> sai thì thực hiện <code class="highlighter-rouge">&lt;hành động 2&gt;</code>*/</p>
+
+<p><strong>Chương trình ví dụ:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d &gt; 0</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+	<span class="k">else</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d &gt;= 0</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d khong la so duong</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>* Dạng mở rộng if…else if…else:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">đ</span><span class="n">i</span><span class="err">ề</span><span class="n">u</span> <span class="n">ki</span><span class="err">ệ</span><span class="n">n</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span>
+	<span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">1</span><span class="o">&gt;</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">đ</span><span class="n">i</span><span class="err">ề</span><span class="n">u</span> <span class="n">ki</span><span class="err">ệ</span><span class="n">n</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span>
+	<span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">2</span><span class="o">&gt;</span>
+<span class="k">else</span>
+	<span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">3</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>/* Nếu <code class="highlighter-rouge">&lt;điều kiện 1&gt;</code> đúng thì thực hiện <code class="highlighter-rouge">&lt;hành động 1&gt;</code> ; nếu <code class="highlighter-rouge">&lt;điều kiện 1&gt;</code> sai -&gt; tiến hành kiểm tra <code class="highlighter-rouge">&lt;điều kiện 2&gt;</code>: <code class="highlighter-rouge">&lt;điều kiện 2&gt;</code> đúng sẽ thực hiện <code class="highlighter-rouge">&lt;hành động 2&gt;</code>; nếu  <code class="highlighter-rouge">&lt;điều kiện 1&gt;</code> và <code class="highlighter-rouge">&lt;điều kiện 2&gt;</code> đều sai thì thực hiện <code class="highlighter-rouge">&lt;hành động 3&gt;</code> */</p>
+
+<p><strong>Chương trình ví dụ:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Nhap so nguyen a: "</span><span class="p">);</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"a la so duong</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"a la so am</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="k">else</span>
+		<span class="n">f</span><span class="p">(</span><span class="s">"a = 0"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Các bạn chạy đoạn chương trình với các giá trị a khác nhau xem sao nhé.</p>
+
+<h3 id="2-cấu-trúc-rẽ-nhánh-switch-case">2. Cấu trúc rẽ nhánh switch case</h3>
+
+<p>Cú pháp:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">bi</span><span class="err">ể</span><span class="n">u</span> <span class="n">th</span><span class="err">ứ</span><span class="n">c</span> <span class="n">nguy</span><span class="err">ê</span><span class="n">n</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="o">&lt;</span><span class="n">gi</span><span class="err">á</span> <span class="n">tr</span><span class="err">ị</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span> <span class="cm">/* có thể không có câu lệnh này*/</span>
+	<span class="k">case</span> <span class="o">&lt;</span><span class="n">gi</span><span class="err">á</span> <span class="n">tr</span><span class="err">ị</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span> <span class="cm">/* có thể không có câu lệnh này*/</span>
+	<span class="p">....</span>
+	<span class="nl">default:</span> <span class="o">&lt;</span><span class="n">h</span><span class="err">à</span><span class="n">nh</span> <span class="err">độ</span><span class="n">ng</span> <span class="n">m</span><span class="err">ặ</span><span class="n">c</span> <span class="err">đị</span><span class="n">nh</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span> <span class="cm">/* có thể không có câu lệnh này*/</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>• Khi một cấu trúc rẽ nhánh switch được thực thi, chương trình sẽ tính toán giá trị của biểu thức. Kết quả thu được phải là kiểu nguyên (ta có thể ép kiểu cho nó. Xem <a href="http://localhost:4000/ngon-ngu-c/toan-tu-trong-c/">Toán tử trong C</a> để biết cách ép kiểu). Tiếp đó nó so sánh kết quả thu được với các giá trị 1,2… , khi tìm thấy một giá trị bằng với kết quả thu được ở trên, nó thực hiện cách lệnh từ sau dấu : tương ứng cho tới cuối cấu trúc switch hoặc tới khi bắt gặp lệnh break;
+ • Trường hợp không tìm thấy giá trị nào bằng với giá trị biểu thức, <hành động="" mặc="" định=""> được thực hiện.</hành></p>
+
+<p><strong>Ví dụ về chương trình in ra cách đọc của một chữ số: (từ 0 -&gt; 9)</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt; stdio.h &gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">chuSo</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Nhap chu so: "</span><span class="p">);</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">chuSo</span><span class="p">);</span>
+	<span class="k">switch</span> <span class="p">(</span><span class="n">chuSo</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Khong"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Mot"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Hai"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Ba"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Bon"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Nam"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Sau"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">7</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Bay"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">8</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Tam"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">9</span><span class="p">:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Chin"</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="nl">default:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Khong phai chu so!"</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+</div>
+
+        <footer>
+    <p>The website of <b>Connor Yimin Wang</b></p>
+    <p>Ambisnail (c) made by <a href="https://ambisnail.github.io">Connor Wang</a></p>
+</footer>
+
+        <style>
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+    </body>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+
+    <script src="http://localhost:4000/assets/scripts/main.js"></script>
+
+    <script src="http://localhost:4000/assets/scripts/return-to-top.js"></script>
+
+
+
+
+
+
+</html>

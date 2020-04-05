@@ -1,0 +1,415 @@
+I"�O<h3 id="1-biến-hằng">1. Biến, hằng:</h3>
+
+<blockquote>
+  <p>Biến, hằng giống như những chiếc hộp có tên riêng mà chúng ta có thể để dữ liệu vào và mang ra mỗi khi chúng ta cần sử dụng. Biến khác hằng ở chỗ giá trị lưu trữ trong biến có thể thay đổi trong quá trình thực hiện chương trình; còn giá thị của hằng thì được định nghĩa ngay từ đầu chương trình, không thay đổi trong suốt quá trình thực hiện chương trình.</p>
+</blockquote>
+
+<h4 id="các-quy-tắc-đặt-tên-biến-hằng">Các quy tắc đặt tên biến, hằng:</h4>
+
+<p>Tên biến, tên hằng:</p>
+
+<ul>
+  <li><strong>Chỉ</strong> chứa các chữ cái, chữ số và kí tự gạch dưới ( _ ) trong <a href="https://vi.wikipedia.org/wiki/ASCII">bảng mã ASCII</a>.</li>
+  <li><strong>Phải</strong> bắt đầu bằng một chữ cái hoặc kí tự gạch dưới.</li>
+  <li><strong>Không</strong> được trùng với các từ khóa trong ngôn ngữ C.</li>
+  <li><strong>Phân biệt hoa thường.</strong> C là ngôn ngữ phân biệt hoa thường, do vậy biến <strong>aBc</strong> và <strong>abc</strong> là khác nhau trong C.</li>
+</ul>
+
+<p>Danh sách các từ khóa trong ngôn ngữ C:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>break</td>
+      <td>enum</td>
+      <td>register</td>
+      <td>typedef</td>
+    </tr>
+    <tr>
+      <td>case</td>
+      <td>extern</td>
+      <td>return</td>
+      <td>union</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>float</td>
+      <td>short</td>
+      <td>unsigned</td>
+    </tr>
+    <tr>
+      <td>const</td>
+      <td>for</td>
+      <td>signed</td>
+      <td>void</td>
+    </tr>
+    <tr>
+      <td>continue</td>
+      <td>goto</td>
+      <td>sizeof</td>
+      <td>volatile</td>
+    </tr>
+    <tr>
+      <td>default</td>
+      <td>if</td>
+      <td>static</td>
+      <td>while</td>
+    </tr>
+    <tr>
+      <td>do</td>
+      <td>int</td>
+      <td>struct</td>
+      <td>_Packed</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Ví dụ:</strong></p>
+
+<ul>
+  <li><strong>Tên đúng: </strong>abc, Abc, abc123, _abc</li>
+  <li><strong>Tên sai:</strong> 1abc <em>(tên sai do bắt đầu bằng số)</em>, b@c <em>(tên sai do chứa kí tự @ không được phép), </em>case <em>(tên sai do trùng với từ khóa).</em></li>
+</ul>
+
+<h4 id="khai-báo-biến">Khai báo biến:</h4>
+
+<p>Vị trí khai báo: Biến thường được khai báo ở đầu chương trình, đầu hàm hoặc khối lệnh.</p>
+
+<p>Có 2 loại biến theo vị trí khai báo:</p>
+
+<ul>
+  <li>Biến toàn cục: biến khai báo ở ngoài các hàm, các khối lệnh. Chu trình sống của chúng từ lúc bắt đầu chương trình tới khi kết thúc chương trình.</li>
+  <li>Biến cục bộ: biến khai báo bên trong các hàm, các khối lệnh. Chu trình sống từ khi bắt đầu khối lệnh tới khi khối lệnh được thực hiện xong.</li>
+</ul>
+
+<p>Cú pháp khai báo biến:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&lt;</span><span class="n">ki</span><span class="err">ể</span><span class="n">u</span> <span class="n">d</span><span class="err">ữ</span> <span class="n">li</span><span class="err">ệ</span><span class="n">u</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">danh</span> <span class="n">s</span><span class="err">á</span><span class="n">ch</span> <span class="n">bi</span><span class="err">ế</span><span class="n">n</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>(Biến trong ngôn ngữ C luôn gắn liền với một kiểu dữ liệu).</p>
+
+<p><strong>Ví dụ:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span> <span class="cm">/* Khai báo biến i,j kiểu số nguyên */</span>
+<span class="kt">char</span> <span class="n">ch</span><span class="p">;</span> <span class="cm">/* Khai báo biến ch kiểu chữ cái ASCII */</span>
+<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span> <span class="cm">/* Khai báo xâu kí tự tên name với độ dài lớn nhất là 100 kí tự */</span> 
+<span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="cm">/* Gán giá trị 0 cho 2 biến i,j */</span>
+<span class="n">ch</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span> <span class="cm">/* Gán giá trị chữ cái A in hoa cho biến ch */</span>
+</code></pre></div></div>
+
+<h4 id="khai-báo-hằng">Khai báo hằng:</h4>
+
+<p>Khai báo hằng thực hiện ở đầu chương trình.</p>
+
+<p><strong>Cách 1: Sử dụng bộ tiền xử lí:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define &lt;tên hằng&gt; &lt;giá trị của hằng&gt;;
+</span></code></pre></div></div>
+
+<p><strong>Cách 2:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="o">&lt;</span><span class="n">ki</span><span class="err">ể</span><span class="n">u</span> <span class="n">d</span><span class="err">ữ</span> <span class="n">li</span><span class="err">ệ</span><span class="n">u</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">t</span><span class="err">ê</span><span class="n">n</span> <span class="n">h</span><span class="err">ằ</span><span class="n">ng</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">gi</span><span class="err">á</span> <span class="n">tr</span><span class="err">ị</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">h</span><span class="err">ằ</span><span class="n">ng</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Trên thực tế tên hằng thường được viết in hoa.</p>
+
+<h4 id="phân-chia-các-kiểu-giá-trịtrong-ngôn-ngữ-c">Phân chia các kiểu giá trị trong ngôn ngữ C:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Kiểu và miêu tả</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>**Kiểu cơ bản:  **Là các kiểu dữ liệu số học và bao gồm 2 kiểu chính: a) kiểu số nguyên và b) kiểu số thực dấu chấm động.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>**Kiểu liệt kê:  **Đây là các kiểu số học và được dùng để định nghĩa các biến mà nó có thể được gán trước một số lượng nhất định giá trị số nguyên qua suốt chương trình.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>**Kiểu void:  **Kiểu định danh *void* là kiểu đặc biệt thể hiện rằng không có giá trị nào.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>**Kiểu phát triển từ cơ bản:  **Bao gồm các kiểu : a) con trỏ, b) kiểu mảng, c) kiểu cấu trúc, d) kiểu union và e) kiểu function (hàm).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Bảng các kiểu nguyên:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kiểu</th>
+      <th>Kích thước biến</th>
+      <th>Khoảng giá trị</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>char</td>
+      <td>1 byte</td>
+      <td>-128 tới 127 hoặc 0 tới 255</td>
+    </tr>
+    <tr>
+      <td>unsigned char</td>
+      <td>1 byte</td>
+      <td>0 tới 255</td>
+    </tr>
+    <tr>
+      <td>signed char</td>
+      <td>1 byte</td>
+      <td>-128 tới 127</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>2 hoặc 4 bytes</td>
+      <td>-32,768 tới 32,767 hoặc -2,147,483,648 tới 2,147,483,647</td>
+    </tr>
+    <tr>
+      <td>unsigned int</td>
+      <td>2 hoặc 4 bytes</td>
+      <td>0 tới 65,535 hoặc 0 tới 4,294,967,295</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>2 bytes</td>
+      <td>-32,768 tới 32,767</td>
+    </tr>
+    <tr>
+      <td>unsigned short</td>
+      <td>2 bytes</td>
+      <td>0 tới 65,535</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>4 bytes</td>
+      <td>-2,147,483,648 tới 2,147,483,647</td>
+    </tr>
+    <tr>
+      <td>unsigned long</td>
+      <td>4 bytes</td>
+      <td>0 tới 4,294,967,295</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Bảng các kiểu số thực dấu phẩy động:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kiểu</th>
+      <th>Kích thước biến</th>
+      <th>Khoảng giá trị</th>
+      <th>Độ chính xác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>float</td>
+      <td>4 byte</td>
+      <td>1.2E-38 tới 3.4E+38</td>
+      <td>6 vị trí thập phân</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>8 byte</td>
+      <td>2.3E-308 tới 1.7E+308</td>
+      <td>15 vị trí thập phân</td>
+    </tr>
+    <tr>
+      <td>long double</td>
+      <td>10 byte</td>
+      <td>3.4E-4932 tới 1.1E+4932</td>
+      <td>19 vị trí thập phân</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Một số kí tự điều khiển:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">\n</code> : Xuống dòng</li>
+  <li><code class="highlighter-rouge">\t</code> : Tab ngang (tạo khoảng trắng giống như khi bạn ấn phím Tab trên bàn phím trong soạn thảo văn bản)</li>
+  <li><code class="highlighter-rouge">\r</code> : Nhảy về đầu hàng</li>
+  <li><code class="highlighter-rouge">\a</code> : Kêu Bip</li>
+  <li><code class="highlighter-rouge">\\</code> : In ra dấu \</li>
+  <li><code class="highlighter-rouge">\”</code> : In ra dấu “</li>
+  <li><code class="highlighter-rouge">\’</code> : In ra dấu ‘</li>
+  <li><code class="highlighter-rouge">%%</code> : In ra dấu %</li>
+</ul>
+
+<h3 id="2-nhập-xuất-dữ-liệu-trong-c">2. Nhập xuất dữ liệu trong C:</h3>
+
+<p>Để nhập xuất cơ bản trong C, ta sử dụng 2 hàm tiêu chuẩn, được định nghĩa trong thư viện <code class="highlighter-rouge">&lt;stdio.h&gt;</code>.</p>
+
+<ul>
+  <li>Hàm <strong>printf()</strong> để in ra thiết bị xuất tiêu chuẩn (màn hình).</li>
+  <li>Hàm <strong>scanf()</strong> để nhận giá trị từ thiết bị nhập tiêu chuẩn (bàn phím) và lưu vào các biến.</li>
+</ul>
+
+<p><strong>Ví dụ về chương trinh nhập một số và in ra số vừa nhập:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">float</span> <span class="n">x</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"blog.vietanhdev.com</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Nhap vao mot so: "</span><span class="p">);</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%f"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"So ban vua nhap la: %f"</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="a-in-dữ-liệu-ra-màn-hình">a) In dữ liệu ra màn hình:</h4>
+
+<p><strong>Cú pháp:</strong> <code class="highlighter-rouge">printf(“xâu kí tự…”, &lt;các biến và các số&gt;);</code></p>
+
+<p>Việc sử dụng đơn giản nhất là in ra một xâu kí tự: “Xin chao cac ban!”:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Xin chao cac ban!"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Vậy bạn muốn in một biến chứa dữ liệu ra màn hinh thì sao?</strong></p>
+
+<p>Ví dụ về in biến chứa 1 số nguyên ra màn hình:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="n">printf</span> <span class="p">(</span><span class="s">"So duoc in ra: %d"</span><span class="p">,</span><span class="n">number</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Để in giá trị của các biến, số ra màn hình, ta phải sử dụng các đặc tả định dạng bắt đầu với % như trên nhằm đại diện cho các biến, số (%d đại diện cho biến số nguyên number).  Các đặc tả định dạng này không được in ra màn hình mà được thay thế bởi các biến, các số đằng sau.</p>
+
+<p><strong>Một số đặc tả định dạng cơ bản:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">%d</code>: số nguyên hệ 10 có dấu</li>
+  <li><code class="highlighter-rouge">%u</code>: số nguyên hệ 10 không dấu</li>
+  <li><code class="highlighter-rouge">%x</code>: số nguyên hệ 16</li>
+  <li><code class="highlighter-rouge">%o</code>: số nguyên hệ bát phân</li>
+  <li><code class="highlighter-rouge">%s</code>: xâu kí tự</li>
+  <li><code class="highlighter-rouge">%c</code>: một kí tự đơn</li>
+  <li><code class="highlighter-rouge">%f</code>: số chấm động cố định</li>
+  <li><code class="highlighter-rouge">%e</code>: số chấm động (ký hiệu có số mũ)</li>
+  <li><code class="highlighter-rouge">l</code> : Tiền tố dùng kèm với <code class="highlighter-rouge">%d</code>, <code class="highlighter-rouge">%x</code>, <code class="highlighter-rouge">%o</code> để chỉ số nguyên dài (ví dụ <code class="highlighter-rouge">%ld</code>)</li>
+</ul>
+
+<p><strong>Chú ý:</strong></p>
+
+<ul>
+  <li>Ta có thể sử dụng đặc tả định dạng để in dữ liệu sang kiểu khác:
+    <ul>
+      <li>Ví dụ:</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="s">"A"</span><span class="p">;</span>
+<span class="n">printf</span> <span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span> <span class="cm">/* In ra 65 */</span>
+<span class="n">printf</span> <span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span> <span class="cm">/* In ra A */</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Để in ra kí tự % ta dùng %%.</li>
+</ul>
+
+<p><strong>Định dạng dữ liệu in ra:</strong></p>
+
+<p><code class="highlighter-rouge">% [-] [fwidth] [.p]</code> trong đó:
+ • <code class="highlighter-rouge">[fwidth]</code> chiều rộng
+ • <code class="highlighter-rouge">[-]</code> căn lề trái
+ • <code class="highlighter-rouge">[.p]</code> số kí tự được in ra</p>
+
+<p><strong>Ví dụ:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>** Giá trị**</th>
+      <th><strong>Đặc tả định dạng</strong></th>
+      <th><strong>Kết quả</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>42</td>
+      <td>%6d</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>%-6d</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>‘z’</td>
+      <td>%3c</td>
+      <td>z</td>
+    </tr>
+    <tr>
+      <td>2.71828</td>
+      <td>%10.2f</td>
+      <td>2.71</td>
+    </tr>
+    <tr>
+      <td>“printf”</td>
+      <td>%10s</td>
+      <td>printf</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="b-nhập-dữ-liệu-từ-bàn-phím">b) Nhập dữ liệu từ bàn phím:</h4>
+
+<p><strong>Cú pháp:</strong> <code class="highlighter-rouge">scanf (“xâu kí tự…”, &lt;các con trỏ&gt;);</code></p>
+
+<p>Ví dụ ta muốn nhập một số nguyên vào biến a:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Lưu ý:</strong>ở đây <code class="highlighter-rouge">&amp;a</code> là con trỏ trỏ tới biến a.</p>
+
+<p><strong>Chú ý khi nhập xâu kí tự chứa dấu cách (space):</strong></p>
+
+<p>Trước khi đọc xâu, chúng ta phải làm sạch bộ đệm bàn phím vì có thể quá trình đọc dữ liệu trước còn lưu lại. Trên Windows chúng ta có lệnh <code class="highlighter-rouge">fflush(stdin);</code> , tuy nhiên nó đã bộc lộ khá nhiều hạn chế, nhất là không thể dùng trên Linux nên tôi không sử dụng ở đây. Chúng ta sẽ dùng đoạn lệnh sau trước lệnh nhập vào một chuỗi:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span> <span class="p">(</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">()</span> <span class="p">)</span> <span class="o">!=</span> <span class="n">EOF</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">!=</span> <span class="sc">'\n'</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>Hoặc</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scanf</span> <span class="p">(</span> <span class="s">"%*[^</span><span class="se">\n</span><span class="s">]"</span> <span class="p">);</span>
+<span class="n">scanf</span> <span class="p">(</span> <span class="s">"%*c"</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Cách 1:</strong> Ta dùng lệnh:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fgets</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>với 100 là độ dài lớn nhất của xâu kí tự bạn muốn nhập vào (bạn có thể thay đổi nó) và name là tên biến xâu kí tự. Việc đọc này sẽ lưu vào biến name cả kí tự xuống dòng ở cuối xâu (khi bạn ấn enter để kết thúc nhập xâu là truyền vào bộ đệm kí tự xuống dòng).</p>
+
+<p><strong>Cách 2:</strong> Ta dùng lệnh:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scanf</span> <span class="p">(</span><span class="s">"%[^</span><span class="se">\n</span><span class="s">]%*c"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>với <code class="highlighter-rouge">name</code> cũng là tên biến xâu kí tự. Đọc cách này sẽ loại bỏ kí tự xuống dòng ở cuối xâu.</p>
+:ET
